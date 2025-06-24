@@ -1,0 +1,24 @@
+{
+  "name": "photography-portfolio",
+  "version": "1.0.0",
+  "description": "A responsive photography portfolio website",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [
+    "photography",
+    "portfolio",
+    "website",
+    "responsive"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "http": "0.0.1-security"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
