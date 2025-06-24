@@ -1,67 +1,76 @@
-// Sample gallery data - in a real application, this would come from a database or API
+// Gallery data with Unsplash images
 const galleryData = [
     {
         id: 1,
         title: 'Mountain Landscape',
         category: 'nature',
         description: 'Beautiful mountain landscape at sunset',
-        imageUrl: 'https://via.placeholder.com/800x600/27ae60/ffffff?text=Nature+Photography+1'
+        imageUrl: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=800&auto=format&fit=crop',
+        credit: 'Photo by Sergey Pesterev on Unsplash'
     },
     {
         id: 2,
         title: 'Urban Architecture',
         category: 'architecture',
         description: 'Modern urban architecture with glass facades',
-        imageUrl: 'https://via.placeholder.com/800x600/3498db/ffffff?text=Architecture+Photography+1'
+        imageUrl: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=800&auto=format&fit=crop',
+        credit: 'Photo by Scott Webb on Unsplash'
     },
     {
         id: 3,
         title: 'Portrait of a Woman',
         category: 'portrait',
         description: 'Portrait of a woman in natural light',
-        imageUrl: 'https://via.placeholder.com/800x600/e74c3c/ffffff?text=Portrait+Photography+1'
+        imageUrl: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop',
+        credit: 'Photo by Brooke Cagle on Unsplash'
     },
     {
         id: 4,
         title: 'Forest Path',
         category: 'nature',
         description: 'Serene path through a misty forest',
-        imageUrl: 'https://via.placeholder.com/800x600/27ae60/ffffff?text=Nature+Photography+2'
+        imageUrl: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=800&auto=format&fit=crop',
+        credit: 'Photo by Lukasz Szmigiel on Unsplash'
     },
     {
         id: 5,
         title: 'Historic Building',
         category: 'architecture',
         description: 'Historic architecture with intricate details',
-        imageUrl: 'https://via.placeholder.com/800x600/3498db/ffffff?text=Architecture+Photography+2'
+        imageUrl: 'https://images.unsplash.com/photo-1495562569060-2eec283d3391?q=80&w=800&auto=format&fit=crop',
+        credit: 'Photo by Francesca Tosolini on Unsplash'
     },
     {
         id: 6,
         title: 'Man in the City',
         category: 'portrait',
         description: 'Portrait of a man in an urban environment',
-        imageUrl: 'https://via.placeholder.com/800x600/e74c3c/ffffff?text=Portrait+Photography+2'
+        imageUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop',
+        credit: 'Photo by Joseph Gonzalez on Unsplash'
     },
     {
         id: 7,
         title: 'Coastal Sunset',
         category: 'nature',
         description: 'Beautiful sunset over the ocean',
-        imageUrl: 'https://via.placeholder.com/800x600/27ae60/ffffff?text=Nature+Photography+3'
+        imageUrl: 'https://images.unsplash.com/photo-1503803548695-c2a7b4a5b875?q=80&w=800&auto=format&fit=crop',
+        credit: 'Photo by Sean O. on Unsplash'
     },
     {
         id: 8,
         title: 'Modern Interior',
         category: 'architecture',
         description: 'Minimalist modern interior design',
-        imageUrl: 'https://via.placeholder.com/800x600/3498db/ffffff?text=Architecture+Photography+3'
+        imageUrl: 'https://images.unsplash.com/photo-1554995207-c18c203602cb?q=80&w=800&auto=format&fit=crop',
+        credit: 'Photo by Sidekix Media on Unsplash'
     },
     {
         id: 9,
         title: 'Artistic Portrait',
         category: 'portrait',
         description: 'Creative portrait with artistic lighting',
-        imageUrl: 'https://via.placeholder.com/800x600/e74c3c/ffffff?text=Portrait+Photography+3'
+        imageUrl: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=800&auto=format&fit=crop',
+        credit: 'Photo by Houcine Ncib on Unsplash'
     }
 ];
 
@@ -123,6 +132,7 @@ function loadGalleryItems(items) {
             <div class="gallery-item-overlay">
                 <h3>${item.title}</h3>
                 <p>${item.description}</p>
+                <small class="photo-credit">${item.credit}</small>
             </div>
         `;
         
@@ -265,7 +275,11 @@ function updateLightboxContent() {
     const currentImage = filteredGallery[currentImageIndex];
     lightboxImg.src = currentImage.imageUrl;
     lightboxImg.alt = currentImage.title;
-    lightboxCaption.textContent = `${currentImage.title} - ${currentImage.description}`;
+    lightboxCaption.innerHTML = `
+        <strong>${currentImage.title}</strong> - ${currentImage.description}
+        <br>
+        <small class="photo-credit">${currentImage.credit}</small>
+    `;
     
     // Handle image loading error
     lightboxImg.onerror = function() {
